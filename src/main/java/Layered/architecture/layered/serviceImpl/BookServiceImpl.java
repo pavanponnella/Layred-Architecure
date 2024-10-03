@@ -1,46 +1,37 @@
 package Layered.architecture.layered.serviceImpl;
 
-import Layered.architecture.layered.entity.BookEntityClass;
+import Layered.architecture.layered.entity.BookEntity;
 import Layered.architecture.layered.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class BookServiceImpl implements BookService {
+public class BookServiceImpl implements BookService{
 
-
-    @Autowired
-    private BookRepository br;
+@Autowired
+   private  BookRepository br;
 
 
     @Override
-    public String addBook(BookEntityClass book) {
-        Integer bookId = book.getBookId();
+    public String addBookDetails(BookEntity ber) {
 
-
-        BookEntityClass save = br.save(book);
-
-
-        if (bookId == null) {
-            return "Record inserted successfully";
-        } else {
-            return "Record updated successfully";
+        Integer bookId = ber.getBookId();
+        BookEntity save = br.save(ber);
+        if(bookId==null) {
+            return "record inserted successfully";
+        }else{
+            return "record updated";
         }
-
     }
 
     @Override
-    public List<BookEntityClass> getAllBookDetails() {
-
-
+    public List<BookEntity> getAllBookDetails() {
         return br.findAll();
     }
 
     @Override
-    public String deleteBook(Integer bookID) {
-        br.deleteById(bookID);
-        return "BookDeleted successfully";
+    public String deleteBookDetailsById(Integer id) {
+        br.deleteById(id);
+        return  "record deleted successfully";
     }
 }

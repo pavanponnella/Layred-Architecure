@@ -1,18 +1,21 @@
 package Layered.architecture.layered.serviceImpl;
 
-import Layered.architecture.layered.entity.BookEntityClass;
+import Layered.architecture.layered.entity.BookEntity;
 
 import java.util.List;
 
 public interface BookService {
 
-    public String addBook(BookEntityClass book);
 
 
-    public List<BookEntityClass> getAllBookDetails();
+
+    public String addBookDetails(BookEntity ber);
 
 
-    public String deleteBook(Integer book);
+    public List<BookEntity> getAllBookDetails();
+
+    public String deleteBookDetailsById(Integer id);
+
 
 
 }

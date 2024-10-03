@@ -1,6 +1,6 @@
 package Layered.architecture.layered;
 
-import Layered.architecture.layered.entity.BookEntityClass;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
