@@ -7,9 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,7 +20,7 @@ public class BookController {
     private BookService bre;
 
 
-    @PostMapping("add-book-details")
+    @PostMapping("/add-book-details")
     public ResponseEntity<String> addBookDetails(@RequestBody BookEntity bnc) {
         log.debug("Received request to add book details: {}", bnc);
         ResponseEntity<String> response;
@@ -39,7 +37,7 @@ public class BookController {
         return response;
     }
 
-
+@GetMapping("/getAllBookDetails")
     public ResponseEntity<List<BookEntity>> getAllBookDetails() {
         ResponseEntity<List<BookEntity>> response;
 
@@ -51,6 +49,14 @@ public class BookController {
             response = new ResponseEntity<>(allBookDetails, HttpStatus.NOT_FOUND);
         }
         return response;
+    }
+
+    @DeleteMapping("/delete-record-by-id/{idNumber}")
+    public ResponseEntity<String> deleteRecordById(@PathVariable Integer idNum){
+
+        String s = bre.deleteBookDetailsById(idNum);
+
+        return new ResponseEntity<>(s,HttpStatus.OK);
     }
 
 }
