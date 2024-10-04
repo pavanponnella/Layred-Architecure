@@ -22,11 +22,11 @@ public class BookController {
 
     @PostMapping("/add-book-details")
     public ResponseEntity<String> addBookDetails(@RequestBody BookEntity bnc) {
-        log.debug("Received request to add book details: {}", bnc);
+//        log.debug("Received request to add book details: {}", bnc);
         ResponseEntity<String> response;
 
         String s = bre.addBookDetails(bnc);
-        log.debug("Book addition result: {}", s);
+//        log.debug("Book addition result: {}", s);
         if (true) {
             response = new ResponseEntity<>(s, HttpStatus.CREATED);
         } else {
@@ -52,7 +52,7 @@ public class BookController {
     }
 
     @DeleteMapping("/delete-record-by-id/{idNumber}")
-    public ResponseEntity<String> deleteRecordById(@PathVariable Integer idNum){
+    public ResponseEntity<String> deleteRecordById(@PathVariable("idNumber") Integer idNum){
 
         String s = bre.deleteBookDetailsById(idNum);
 

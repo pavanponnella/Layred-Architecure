@@ -1,7 +1,10 @@
 package Layered.architecture.layered.entity;
 
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -10,12 +13,14 @@ import lombok.Data;
 @Data
 public class BookEntity {
 
-    private Integer bookId;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer bookid;
 
+	@Column(name = "book_name")
+	private String bookname;
 
-    private String bookName;
-
-    private Double bookPrice;
-
+	@Column(name = "book_price")
+	private Double bookprice;
 
 }
